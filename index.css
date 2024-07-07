@@ -1,0 +1,88 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aqua;
+    align-content: center;
+    /* box-shadow: 0px 25px grey; */
+}
+
+.nav {
+    display: flex;
+    width: 1200px;
+    overflow: auto;
+    padding: 12px;
+    justify-content: space-between;
+    background-color: aquamarine;
+}
+
+.nav * {
+    text-decoration: none;
+    color: black;
+}
+
+.left {
+    float: left;
+    background-color: red;
+    padding: 6px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 15%;
+}
+
+.right {
+    float: right;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    justify-content: space-between;
+}
+
+.right a {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.content {
+    padding: 25px;
+    border-radius: 15px;
+    padding-bottom: 150px;
+    width: 1000px;
+    background-color: burlywood;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchBox {
+    margin-top: 100px;
+    margin-bottom: 20px;
+    width: 600px;
+    background-color: azure;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+}
+
+.searchText {
+    text-align: center;
+}
+
+.searchForm h3 {
+    background-color: red;
+    border-radius: 5px;
+}
+
+.leaflet-container {
+    z-index: 0 !important;
+}
