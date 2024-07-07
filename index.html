@@ -1,0 +1,115 @@
+<!-- THIS IS A SUPER ROUGH DRAFT -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobSeeker</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    <style>
+        #map { height: 480px;
+            width: 480px;
+            }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="nav">
+            <div class="left">
+                <a href="index.html">JobSeeker</a>
+            </div>
+            <div class="right">
+                <a href="signin.php">Sign in 👤</a>
+                <a href="Search.php">Search 🔎</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="searchBox">
+            <div class="searchText">
+                <h2> SEARCH </h2>
+                <div class="searchForm">
+                    <b> I am looking for a... </b>
+                    <form action="search.php" method="post">
+                        <!-- Look into datalists? -->
+                        <select id="role" name="role">
+                            <option value="programmer">Programmer</option>
+                            <option value="engineer">Engineer</option>
+                            <option value="manager">Manager</option>
+                        </select>
+                        <select id="searchFor" name="searchFor">
+                            <option value="role">Role</option>
+                            <option value="employee">Employee</option>
+                        </select>
+                    </form>
+                    <h3>SUBMIT</h3>
+                </div>
+            </div>
+        </div>
+        <div id="map"></div>
+        <p>
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium nibh ac mi mollis mattis. Aliquam posuere felis et vehicula tincidunt. Integer dignissim nibh ut tortor convallis mollis. Ut dictum eget lectus vestibulum semper. Nunc fermentum tortor sed lacinia ornare. Fusce vel lacinia nisl. Vivamus blandit quis diam in ullamcorper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+
+Aenean non arcu vitae massa maximus malesuada eget sit amet mi. Suspendisse tempor pellentesque purus, sit amet auctor odio feugiat eu. Cras convallis, felis eu elementum efficitur, elit tortor facilisis lacus, a egestas lectus urna ut nibh. Phasellus imperdiet non sem vitae mattis. Nunc blandit imperdiet porttitor. Integer faucibus est sed porta scelerisque. Suspendisse turpis ante, egestas vitae euismod id, cursus condimentum tortor. Ut scelerisque metus vel sollicitudin venenatis. Etiam vitae fringilla mi. Aliquam erat volutpat. In egestas massa eu felis pulvinar volutpat. Aenean ultrices accumsan ipsum at pulvinar. Nullam ornare magna lorem, eget venenatis justo facilisis condimentum. Quisque ultrices, nisl eget consequat pellentesque, nunc libero eleifend leo, sed lacinia sapien sem et nulla.
+
+Vestibulum odio quam, vehicula eu ornare eu, gravida eu dolor. Duis sit amet dui urna. Suspendisse eu mi iaculis, rutrum est quis, interdum lectus. Donec posuere rutrum nibh sodales porta. Fusce sed consectetur nisi. Vestibulum mi neque, aliquam ac ultricies vel, varius at nisl. In massa dolor, consequat non lectus nec, pretium congue mi. In consequat tincidunt dignissim. Cras ante metus, viverra maximus mauris in, pharetra pellentesque quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum non orci maximus, consectetur enim vel, aliquam sapien. Sed ultricies aliquet felis, eu luctus risus lacinia sit amet. Aliquam orci arcu, tincidunt ac gravida quis, faucibus ac ex.
+
+Nulla facilisi. Donec vel laoreet odio. Morbi pharetra dapibus diam et luctus. Phasellus facilisis diam id consequat volutpat. Fusce ullamcorper mollis tincidunt. Donec ac iaculis enim. Donec risus ipsum, vulputate ut sapien a, volutpat iaculis purus.
+
+Donec tincidunt dapibus porta. Nam ultricies nisl sed ex commodo, eget tincidunt nisi pulvinar. Nam pretium, tellus eget hendrerit hendrerit, nunc quam viverra est, ac imperdiet quam odio sed neque. Vestibulum fermentum tincidunt metus, id egestas arcu fermentum sed. Cras in tristique sem, at blandit nulla. In consectetur quam sit amet magna volutpat maximus eget sit amet augue. Fusce sed erat mauris. Fusce scelerisque nisl in dui elementum dictum. Mauris ut efficitur sem. Curabitur id tortor sollicitudin, tincidunt velit eget, semper neque. In a congue nisi. Cras lobortis ante in justo tempus, ut finibus lacus vehicula. Mauris a risus ornare, porttitor nisl at, blandit libero.
+
+In varius euismod metus, nec vulputate turpis ultricies laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam odio metus, finibus sit amet aliquam tempus, dictum nec quam. Duis aliquet risus non pretium dictum. Vestibulum rhoncus varius dui vel gravida. Suspendisse vel tristique tellus, sed accumsan libero. Morbi enim massa, sodales non viverra vel, imperdiet ornare urna. Fusce vulputate ex id erat mollis, sit amet sagittis quam commodo. In sed sodales ipsum, ac placerat nunc. Etiam urna turpis, tincidunt nec tempus sed, aliquam a tellus. Curabitur blandit non mi id laoreet. Suspendisse porttitor imperdiet vulputate. Aenean commodo dui et eros commodo ullamcorper. Mauris in aliquam lacus.
+
+Mauris tempor ornare lectus et euismod. Donec sit amet nunc dui. Proin eget semper ex. Etiam convallis, tellus quis aliquet cursus, metus tortor pulvinar turpis, in bibendum mi odio eget risus. Etiam in orci lorem. Cras a laoreet mi. Donec tempor iaculis sem, sagittis congue sapien porta in. Vivamus lobortis magna orci, vitae porta lacus eleifend eu.
+
+Aliquam in arcu aliquam tortor fringilla dignissim nec nec nisi. Aliquam vitae vehicula nibh. Pellentesque suscipit turpis id tortor posuere, nec efficitur tortor suscipit. Nulla consectetur bibendum gravida. Nulla metus dolor, dapibus vel tincidunt ac, sodales at mauris. Pellentesque elementum varius semper. Sed congue nisl a blandit iaculis. Vestibulum nec mauris bibendum, aliquet lacus sit amet, lacinia erat. Ut quis sapien quis felis sodales sagittis et commodo mauris. Nunc fringilla erat a ipsum ultricies, in porttitor erat bibendum. Pellentesque rutrum sit amet odio ut tincidunt. Vestibulum aliquet urna ut neque lacinia accumsan. Nullam purus ante, mattis ac condimentum convallis, faucibus ut lacus.
+
+Pellentesque auctor tortor non felis aliquam lacinia. Ut ac dui urna. Vestibulum aliquam eleifend nisi fermentum interdum. Nullam vestibulum magna diam, id eleifend dolor faucibus id. Nullam nec nisl quis magna commodo blandit vitae quis dolor. Aenean ut ex commodo, vulputate mauris at, bibendum magna. Fusce quis erat ut magna eleifend sollicitudin vel et orci. Suspendisse potenti. Etiam imperdiet, elit non lobortis consequat, diam orci facilisis sem, eget ultricies diam felis vel ex. Mauris ut urna vel justo maximus elementum sit amet volutpat felis.
+
+Donec vel auctor ante. Nullam nec placerat sapien, vel tempor nisi. Pellentesque consectetur tellus nec ligula sodales, id sollicitudin libero facilisis. Sed facilisis erat a velit scelerisque, vitae venenatis velit consectetur. Nunc congue pharetra libero id egestas. Sed non dui nibh. Suspendisse ante libero, porta a nibh viverra, sagittis varius magna. Donec vitae est tincidunt, scelerisque augue a, venenatis dolor. Vivamus sit amet ipsum a mi fringilla dignissim non ut odio. Morbi placerat volutpat magna, sed porttitor nunc finibus eu. Maecenas augue lacus, mattis sed lorem sit amet, congue placerat ligula. Donec fringilla pulvinar congue. Cras tristique augue sed ligula volutpat tempor. Nulla consectetur arcu vitae magna malesuada tincidunt. 
+        </p>
+    </div>
+    
+</body>
+<script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    navigator.geolocation.getCurrentPosition(success, error);
+
+    function success(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const accuracy = position.coords.accuracy;
+
+        let marker = L.marker([latitude, longitude]).addTo(map);
+        let circle = L.circle([latitude, longitude], {radius: accuracy}).addTo(map);
+
+        map.fitBounds(circle.getBounds().pad(1)); // look into using .pad here
+    }
+
+    
+
+    function error(err) {
+        if (err.code === 1) {
+            alert('Please allow location permissions for this site.');
+        } else {
+            alert('There appears to be a technical error with your browser')
+        }
+    }
+
+</script>
+</html>
