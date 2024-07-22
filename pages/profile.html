@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Job User Profile</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+
+        * {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        :root {
+            --bg: #111111;
+            --vibrant: #E8474C;
+            --text: white;
+            --label: white;
+            --border: transparent;
+            --static: #222222;
+            --focus: #4E4E4E;
+            --active: white;
+            --inactive: #4E4E4E;
+            --error: #E8474C;
+        }
+
+        html {
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #111;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .homeButton {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--vibrant);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .homeButton:hover {
+            background: #E8474C;
+        }
+
+        .signupSection {
+            flex: 1;
+            background: url(https://source.unsplash.com/TV2gg2kZD1o/800x800);
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+        }
+
+        .info {
+            padding: 30px;
+            background: rgba(20, 20, 20, .8);
+        }
+
+        .info h2 {
+            padding-top: 30px;
+            font-weight: 300;
+        }
+
+        .info p {
+            font-size: 18px;
+        }
+
+        .icon {
+            font-size: 8em;
+            padding: 20px 0;
+            color: rgba(10, 180, 180, 1);
+        }
+
+        .signupForm {
+            padding: 30px;
+            background: rgba(20, 40, 40, .8);
+            flex: 1;
+        }
+
+        .signupForm h2 {
+            font-weight: 300;
+        }
+
+        .inputFields {
+            margin: 15px 0;
+            font-size: 16px;
+            padding: 10px;
+            width: calc(100% - 40px);
+            border: 1px solid rgba(10, 180, 180, 1);
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            background: rgba(20, 20, 20, .2);
+            color: white;
+            outline: none;
+        }
+
+        .noBullet {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #join-btn {
+            border: 1px solid rgba(10, 180, 180, 1);
+            background: rgba(20, 20, 20, .6);
+            font-size: 18px;
+            color: white;
+            margin-top: 20px;
+            padding: 10px 50px;
+            cursor: pointer;
+            transition: .4s;
+        }
+
+        #join-btn:hover {
+            background: rgba(20, 20, 20, .8);
+            padding: 10px 80px;
+        }
+
+        .profileDisplay {
+            flex: 1;
+            padding: 30px;
+            background: rgba(30, 30, 30, .8);
+            color: white;
+        }
+
+        .profileDisplay h2 {
+            font-weight: 300;
+        }
+
+        .profileDisplay p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="dashboard.html" class="homeButton">Home</a>
+        <div class="signupSection">
+            <div class="info">
+                <h2>Welcome Back!</h2>
+                <p>Update your profile to find the best job matches for you.</p>
+                <div class="icon">👔</div>
+            </div>
+            <div class="signupForm">
+                <h2>Update Profile</h2>
+                <form class="form" id="profileForm" action="/save-profile" method="POST" enctype="multipart/form-data">
+                    <div class="field">
+                        <label for="fullName" class="label">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" class="text-input input inputFields" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="email" class="label">Email</label>
+                        <input type="email" id="email" name="email" class="text-input input inputFields" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="education" class="label">Education</label>
+                        <textarea id="education" name="education" class="textarea input inputFields" rows="3" required></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label for="experience" class="label">Work Experience</label>
+                        <textarea id="experience" name="experience" class="textarea input inputFields" rows="3"></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label for="skills" class="label">Skills</label>
+                        <input type="text" id="skills" name="skills" class="text-input input inputFields" placeholder="e.g., JavaScript, Python, UI/UX Design" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="resume" class="label">Upload Resume</label>
+                        <input type="file" id="resume" name="resume" class="text-input input inputFields" accept=".pdf,.doc,.docx" required>
+                    </div>
+
+                    <div class="field last">
+                        <button type="submit" id="join-btn" class="button">Update Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="profileDisplay" id="profileDisplay">
+            <h2>Profile Information</h2>
+            <p><strong>Full Name:</strong> <span id="displayFullName"></span></p>
+            <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+            <p><strong>Education:</strong> <span id="displayEducation"></span></p>
+            <p><strong>Work Experience:</strong> <span id="displayExperience"></span></p>
+            <p><strong>Skills:</strong> <span id="displaySkills"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('profileForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form data
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const education = document.getElementById('education').value;
+            const experience = document.getElementById('experience').value;
+            const skills = document.getElementById('skills').value;
+
+            // Update profile display
+            document.getElementById('displayFullName').textContent = fullName;
+            document.getElementById('displayEmail').textContent = email;
+            document.getElementById('displayEducation').textContent = education;
+            document.getElementById('displayExperience').textContent = experience;
+            document.getElementById('displaySkills').textContent = skills;
+
+            // Optionally, send data to server using fetch or XMLHttpRequest
+            // const formData = new FormData(this);
+            // fetch('/save-profile', {
+            //     method: 'POST',
+            //     body: formData
+            // }).then(response => {
+            //     if (response.ok) {
+            //         // Handle successful save
+            //     }
+            // }).catch(error => {
+            //     // Handle error
+            // });
+        });
+    </script>
+</body>
+</html>

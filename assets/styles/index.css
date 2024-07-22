@@ -1,0 +1,156 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(58, 58, 58);
+    align-content: center;
+    /* box-shadow: 0px 25px grey; */
+}
+
+.nav {
+    display: flex;
+    width: 100%;
+    overflow: auto;
+    justify-content: space-between;
+    background-color: rgb(84, 84, 84);
+}
+
+.nav * {
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: black;
+    padding: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+.left {
+    display: grid;
+    place-items: center;
+    float: left;
+    /*
+    background-color: rgb(236, 35, 35);
+    border-radius: 4px;
+    padding: 12px;
+    */
+}
+
+.right {
+    float: right;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    justify-content: space-between;
+    overflow: visible;
+}
+
+.right a {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.content {
+    padding: 36px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    max-width: 1000px;
+    width: 100%;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    text-align: center; /* REMEMBER THIS!!! */
+}
+
+.searchBox {
+    margin-top: 50px;
+    max-width: 600px;
+    box-sizing: border-box;
+    width: 80%;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.searchText {
+    text-align: center;
+}
+
+.searchForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.searchForm button {
+    margin: 10px;
+    padding: 4px;
+    color: black;
+    background-color: rgb(221, 50, 50);
+    width: 75%;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-weight: bolder;
+}
+
+.RECCOMENDED {
+    max-width: 600px;
+    width: 80%;
+    overflow: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.RECCOMENDEDtext {
+    text-align: center;
+}
+
+.RECCOMENDEDlist {
+    display: flex;
+    flex-direction: column;
+}
+
+.RECCOMENDEDjob {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 4px;
+    margin-right: 8px;
+    background-color: lightgray;
+}
+
+.RECCOMENDEDrole {
+    text-align: left;
+}
+
+.RECCOMENDEDcompany {
+    float: right;
+}
+
+.leaflet-container {
+    z-index: 0 !important;
+}

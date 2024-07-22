@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Portal - Search</title>
+  <link rel="stylesheet" href="../assets/styles/global.css">
+</head>
+
+<body>
+  <header class="dashboard-header">
+    <div class="logo">Job Portal</div>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/search">Search</a>
+      <a id="logoutButton">Logout</a>
+    </div>
+  </header>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Search Jobs</h2>
+      <input type="text" id="searchQuery" placeholder="Search by title, description, or location">
+      <button id="searchButton" type="button">Search</button>
+    </aside>
+    <main class="main-content" id="jobListings">
+      <!-- Job listings will be dynamically added here -->
+    </main>
+  </div>
+  <footer>
+    &copy; 2024 Job Portal. All rights reserved.
+  </footer>
+
+  <script src="../assets/scripts/global.js"></script>
+  <script>
+    document.getElementById('logoutButton').addEventListener('click', function () {
+      // Remove the token from cookies
+      document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+      // Redirect to the main page
+      window.location.href = '/';
+      alert('Logged out successfully');
+    });
+
+    document.getElementById('searchButton').addEventListener('click', function () {
+      const searchQuery = document.getElementById('searchQuery').value;
+      fetchJobs(searchQuery);
+    });
+
+    function fetchJobs(query) {
+      fetch(`/api/jobs/search?q=${query}`)
+        .then(response => response.json())
+        .then(data => {
+          const jobListings = document.getElementById('jobListings');
+          jobListings.innerHTML = '';
+          data.forEach(job => {
+            const jobListing = document.createElement('div');
+            jobListing.className = 'job-listing';
+            jobListing.innerHTML = `
+              <h3>${job.title}</h3>
+              <p>${job.company_name} - ${job.location}</p>
+              <p>${job.salary_range}</p>
+              <p>${job.description}</p>
+              <a href="${job.application_link}" class="button">Apply</button></a>
+            `;
+            jobListings.appendChild(jobListing);
+          });
+        });
+    }
+
+    // Fetch all jobs on page load
+    fetchJobs('');
+  </script>
+</body>
+
+</html>

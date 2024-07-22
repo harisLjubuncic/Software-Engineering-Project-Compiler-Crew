@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Portal - Admin</title>
+  <link rel="stylesheet" href="../assets/styles/global.css">
+</head>
+
+<body>
+  <header class="dashboard-header">
+    <div class="logo">Admin</div>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/admin">Admin</a>
+      <a id="logoutButton">Logout</a>
+    </div>
+  </header>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Manage Job Postings</h2>
+      <form id="jobForm">
+        <input type="hidden" id="jobId">
+        <div class="form-group">
+          <label for="title">Job Title</label>
+          <input type="text" id="title" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="salaryRange">Salary Range</label>
+          <input type="text" id="salaryRange">
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" id="location" required>
+        </div>
+        <div class="form-group">
+          <label for="companyName">Company Name</label>
+          <input type="text" id="companyName" required>
+        </div>
+        <div class="form-group">
+          <label for="applicationLink">Application Link</label>
+          <input type="text" id="applicationLink" required="">
+        </div>
+        <div class="form-group">
+          <button type="submit">Save Job</button>
+        </div>
+      </form>
+    </aside>
+    <main class="main-content">
+      <h2>Job Listings</h2>
+      <div id="jobListings"></div>
+    </main>
+  </div>
+  <footer>
+    &copy; 2024 Job Portal. All rights reserved.
+  </footer>
+
+  <script src="../assets/scripts/global.js"></script>
+  <script>
+    document.getElementById('logoutButton').addEventListener('click', function () {
+      // Remove the token from cookies
+      document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+      // Redirect to the main page
+      window.location.href = '/';
+      alert('Logged out successfully');
+    });
+
+    function fetchJobs() {
+      fetch('/api/jobs').then(response => response.json()).then(data => {
+        const jobListings = document.getElementById('jobListings');
+        jobListings.innerHTML = '';
+        data.forEach(job => {
+          const jobListing = document.createElement('div');
+          jobListing.className = 'job-listing';
+          jobListing.innerHTML = `
+            <h3>${job.title}</h3>
+            <p>${job.company_name} - ${job.location}</p>
+            <p>${job.salary_range}</p>
+            <p>${job.description}</p>
+            <a href="${job.application_link}" class="button">Apply</button></a>
+            <button onclick="editJob(${job.id})">Edit</button>
+            <button onclick="deleteJob(${job.id})">Delete</button>
+          `;
+          jobListings.appendChild(jobListing);
+        });
+      });
+    }
+
+    function editJob(id) {
+      fetch(`/api/jobs/${id}`).then(response => response.json()).then(job => {
+        console.log(job)
+        document.getElementById('jobId').value = job.id;
+        document.getElementById('title').value = job.title;
+        document.getElementById('description').value = job.description;
+        document.getElementById('salaryRange').value = job.salary_range;
+        document.getElementById('location').value = job.location;
+        document.getElementById('companyName').value = job.company_name;
+        document.getElementById('applicationLink').value = job.application_link;
+
+        // Temporarily store jobId in the form
+        document.getElementById('jobForm').dataset.jobId = job.id;
+        document.getElementById('jobForm').dataset.isEditing = true;
+      });
+    }
+
+    function deleteJob(id) {
+      if (confirm('Are you sure you want to delete this job?')) {
+        fetch(`/api/jobs/${id}`, {
+          method: 'DELETE'
+        }).then(response => response.json()).then(data => {
+          alert('Job deleted successfully');
+          fetchJobs();
+        });
+      }
+    }
+
+    function clearForm() {
+      document.getElementById('jobForm').reset();
+      delete document.getElementById('jobForm').dataset.jobId;
+      delete document.getElementById('jobForm').dataset.isEditing;
+    }
+
+    // Create or Update jobs
+    document.getElementById('jobForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const jobId = document.getElementById('jobId').value;
+      const title = document.getElementById('title').value;
+      const description = document.getElementById('description').value;
+      const salaryRange = document.getElementById('salaryRange').value;
+      const location = document.getElementById('location').value;
+      const companyName = document.getElementById('companyName').value;
+      const applicationLink = document.getElementById('applicationLink').value
+
+      const job = { title, description, salary_range: salaryRange, location, company_name: companyName, application_link: applicationLink};
+
+      if (document.getElementById('jobForm').dataset.isEditing) {
+        const jobId = document.getElementById('jobForm').dataset.jobId;
+        fetch(`/api/jobs/${jobId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(job)
+        }).then(response => response.json()).then(data => {
+          alert('Job updated successfully');
+          clearForm();
+          fetchJobs();
+        });
+      } else {
+        fetch('/api/jobs', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(job)
+        }).then(response => response.json()).then(data => {
+          alert('Job created successfully');
+          clearForm();
+          fetchJobs();
+        });
+      }
+    });
+
+    // Fetch jobs on page load
+    fetchJobs();
+  </script>
+</body>
+
+</html>
